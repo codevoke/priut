@@ -10,6 +10,10 @@ from models import PostModel
 
 class Post(Resource):
     @classmethod
+    def get(cls):
+        return {"posts": [p.json() for p in PostModel.query.all()]}, 200
+        
+    @classmethod
     @jwt_required()
     def post(cls):
         args = request.get_json()
