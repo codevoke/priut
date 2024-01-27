@@ -16,7 +16,7 @@ CORS(app)
 
 # use .env file for debugging.
 # in production comment this line and use host environment variables
-load_dotenv()
+# load_dotenv()
 
 # create jwt manager object for configuring app with jwt
 jwt = JWTManager(app)
