@@ -1,0 +1,21 @@
+.HomePage {
+    display: block;
+    box-sizing: border-box;
+    padding: 100px 10vw 0;
+    background: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fab-wrapper {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.post-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+}
