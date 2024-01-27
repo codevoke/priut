@@ -1,0 +1,15 @@
+.Header {
+    position: fixed;
+    width: 100vw;
+    height: 80px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+
+.Header .title {
+    font-size: 30px;
+    font-weight: bold;
+}
