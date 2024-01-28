@@ -10,7 +10,7 @@ export default function Logout () {
   useEffect( () => {
     setter({ auth: false, token: "" });
     navigate("/");
-  }, [])
+  }, [navigate])
 
   return "redirecting..."
 }
