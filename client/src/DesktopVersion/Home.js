@@ -60,9 +60,9 @@ function PostLoader () {
 
 function Post ({title, content, image}) {
     return (
-        <Card sx={{ maxWidth: 600 }}>
+        <Card sx={{ maxWidth: 800 }}>
             <CardMedia
-                sx={{ height: 500 }}
+                sx={{ height: 400 }}
                 image={image}
                 title="picture of post"
             />
