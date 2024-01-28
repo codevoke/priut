@@ -43,7 +43,7 @@ export default function Form() {
     return (
 
         <div className="form-wrapper">
-            <center><span className="title"> Create new post </span></center>
+            <center><span className="title"> Authorization </span></center>
             <Divider />
             <TextField
                 label="login" 
@@ -52,11 +52,9 @@ export default function Form() {
                 onChange={e => setLogin(e.target.value)} />
             <TextField 
                 label="password" 
-                variant="outlined" 
+                variant="outlined"
+                type="password"
                 placeholder="please don't write 0000 here"
-                multiline
-                maxRows={10}
-                minRows={5}
                 onChange={e => setPassword(e.target.value)} />
             <Button variant="contained" color="primary" onClick={auth} className="submit">Submit</Button>
         </div>
