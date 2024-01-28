@@ -10,6 +10,7 @@ import Home from './DesktopVersion/Home';
 import Header from './DesktopVersion/Header';
 import Form from './DesktopVersion/Form';
 import Login from './DesktopVersion/Login';
+import Logout from './DesktopVersion/Logout';
 // import MobileHome from './MobileVersion/Home';
 // import MobileHeader from './MobileVersion/Header';
 
@@ -41,6 +42,7 @@ export default function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/new-post" element={<Form />} />
+			<Route path="/logout" element={<Logout />} />
                     </Routes>
                 </BrowserRouter>
                 <MobileView>
