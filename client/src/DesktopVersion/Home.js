@@ -62,7 +62,7 @@ function Post ({title, content, image}) {
     return (
         <Card sx={{ maxWidth: 600 }}>
             <CardMedia
-                sx={{ height: 250 }}
+                sx={{ height: 500 }}
                 image={image}
                 title="picture of post"
             />
