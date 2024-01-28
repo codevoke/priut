@@ -1,7 +1,7 @@
 .Header {
     position: fixed;
     width: 100vw;
-    height: 80px;
+    height: 60px;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
