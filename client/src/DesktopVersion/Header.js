@@ -8,13 +8,13 @@ export default function Header () {
     const navigate = useNavigate();
     const { user } = useContext(Data);
     const handleClick = () => {
-        user.auth == true ?
+        user.auth === true ?
             navigate("/logout") : navigate("/login")
     }
     return (
         <div className="Header">
             <div className='title'>Priut</div>
-            <Button variant="outlined" onClick={handleClick}>{ user.auth == true ? "Logout" : "Login" }</Button>
+            <Button variant="outlined" onClick={handleClick}>{ user.auth === true ? "Logout" : "Login" }</Button>
         </div>
     )
 }
