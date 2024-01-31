@@ -13,7 +13,7 @@ export default function Header () {
     }
     return (
         <div className="Header">
-            <div className='title'>Priut</div>
+            <div className='title'>Priut: 3 HUYA</div>
             <Button variant="outlined" onClick={handleClick}>{ user.auth === true ? "Logout" : "Login" }</Button>
         </div>
     )
