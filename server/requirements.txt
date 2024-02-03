@@ -6,7 +6,8 @@ psycopg2-binary
 
 flask-jwt-extended
 flask-restful
-flask_cors
+flask-cors
+flask-socketio
 requests
 
 passlib

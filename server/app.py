@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 from models import db
 from resources import api
+from web_sockets import ws_server
 
 from init_admin import initialize_database
 
@@ -16,7 +17,7 @@ CORS(app)
 
 # use .env file for debugging.
 # in production comment this line and use host environment variables
-# load_dotenv()
+load_dotenv()
 
 # create jwt manager object for configuring app with jwt
 jwt = JWTManager(app)
@@ -41,7 +42,10 @@ migrate = Migrate(app, db)
 # initialization app to api
 api.init_app(app)
 
+# initialization app to websocket server
+ws_server.init_app(app)
+
 
 # for debug uncomment next 2 line or run in cmd `flask start`
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port="5000")
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
