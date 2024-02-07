@@ -29,7 +29,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["PROPAGATE_EXCEPTIONS"] = True
 
 # configure cdn url
-app.config["CDN_URL"] = os.getenv('CDN_URL')
+app.config["CDN_URL"] = os.getenv('DEVELOPMENT_CDN_URL')
 
 # initialization app to database
 db.init_app(app)

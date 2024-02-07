@@ -1,16 +1,19 @@
+import axios from 'axios';
 import React from 'react';
 import { createContext, useState } from 'react';
-import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BrowserView, MobileView } from 'react-device-detect';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Home from './DesktopVersion/Home';
+
+import Home from   './DesktopVersion/Home';
 import Header from './DesktopVersion/Header';
-import Form from './DesktopVersion/Form';
-import Login from './DesktopVersion/Login';
+import Form from   './DesktopVersion/Form';
+import Login from  './DesktopVersion/Login';
 import Logout from './DesktopVersion/Logout';
+
 // import MobileHome from './MobileVersion/Home';
 // import MobileHeader from './MobileVersion/Header';
 
@@ -28,8 +31,9 @@ export default function App() {
         localStorage.setItem("auth", data.auth);
         localStorage.setItem("access_token", data.token);
     }   
-
-    axios.defaults.baseURL = "https://priut-29ra.onrender.com/api";
+    alert("url:" + process.env.DEVELOPMENT_SERVER_URL)
+    
+    axios.defaults.baseURL = process.env.DEVELOPMENT_SERVER_URL;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
 

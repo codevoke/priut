@@ -1,19 +1,14 @@
-
-# A very simple Flask Hello World app for you to get started with...
-
 from flask import Flask, request, send_file
 import base64
 from io import BytesIO
 from PIL import Image
-import os
 
 
 app = Flask(__name__)
 
-
 @app.route('/', methods=["GET"])
 def hello_world():
-    return "hello from priut cdn {}".format(os.getcwd())
+    return "hello from priut cdn"
 
 
 @app.route('/image/<int:id>')
@@ -28,7 +23,6 @@ def upload_photo():
         return "image or post_id missed", 400
 
     file = open(f"mysite/images/{args['post_id']}.png", 'w+')
-    file.write(' ')
     file.close()
 
     base64_text = args.get('image').split(',')[-1]
@@ -37,3 +31,7 @@ def upload_photo():
     image.save(f"mysite/images/{args['post_id']}.png", "PNG")
 
     return f"http://codevoke.pythonanywhere.com/image/{args['post_id']}"
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5050)
