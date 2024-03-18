@@ -14,6 +14,9 @@ import Form from   './DesktopVersion/Form';
 import Login from  './DesktopVersion/Login';
 import Logout from './DesktopVersion/Logout';
 
+import MainPage from './DesktopVersion/MainPage'
+import Payments from './DesktopVersion/Payments'
+
 // import MobileHome from './MobileVersion/Home';
 // import MobileHeader from './MobileVersion/Header';
 
@@ -32,7 +35,7 @@ export default function App() {
         localStorage.setItem("access_token", data.token);
     }   
     
-    axios.defaults.baseURL = "https://priut-at3l.onrender.com/api/";
+    axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
 
@@ -45,6 +48,8 @@ export default function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/new-post" element={<Form />} />
+                        <Route path="/main" element={<MainPage />} />
+                        <Route path="/payments" element={<Payments />} />
 			<Route path="/logout" element={<Logout />} />
                     </Routes>
                 </BrowserRouter>

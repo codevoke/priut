@@ -1,19 +1,18 @@
 # build client
 FROM node:14 AS build
 
-WORKDIR /app/client
+WORKDIR /client
 
-COPY package*.json ./
+COPY package*.json /client
 
 RUN npm install
 
-COPY . .
+COPY . /client
 
-ENV DEVELOPMENT_SERVER_URL="https://glorious-journey-44q4rj6549w2qvpq-5000.app.github.dev/api"
-ENV PRODUCTION_SERVER_URL="https://priut-29ra.onrender.com/api"
+ARG REACT_APP_SERVER_URL
+
+ENV REACT_APP_SERVER_URL=${REACT_APP_SERVER_URL}
 
 RUN npm run build
 
 RUN npm install -g serve
-
-CMD ["serve", "-s", "build"]

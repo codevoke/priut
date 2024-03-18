@@ -6,12 +6,21 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
+    column-gap: 2em;
     align-items: center;
     box-sizing: border-box;
     padding: 0 50px 0 100px;
 }
 
 .Header .title {
+    width: 400px;
     font-size: 30px;
-    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    color: cornflowerblue !important;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: cornflowerblue;
 }
