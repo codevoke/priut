@@ -33,7 +33,7 @@ export default function App() {
     }   
     alert("url:" + process.env.DEVELOPMENT_SERVER_URL)
     
-    axios.defaults.baseURL = process.env.DEVELOPMENT_SERVER_URL;
+    axios.defaults.baseURL = "https://priut-at3l.onrender.com/api/";
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
 
