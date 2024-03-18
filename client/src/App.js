@@ -31,7 +31,6 @@ export default function App() {
         localStorage.setItem("auth", data.auth);
         localStorage.setItem("access_token", data.token);
     }   
-    alert("url:" + process.env.DEVELOPMENT_SERVER_URL)
     
     axios.defaults.baseURL = "https://priut-at3l.onrender.com/api/";
     axios.defaults.headers.post['Content-Type'] = 'application/json';
