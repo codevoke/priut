@@ -1,21 +1,59 @@
-version: '3'
+version: '3.9'
 services:
-  cdn:
-    build:
-      context: cdn
-    ports:
-      - "5050:5050"
   server:
-    build:
-      context: server
+    container_name: backend
+    build: ./server
     ports:
       - "5000:5000"
+    restart: on-failure
+    environment:
+      - DATABASE_URI=postgresql://postgres:postgres@priut_db:5432/postgres
+      - CDN_URL=https://redesigned-space-memory-v66v547rjg9jfxr55-4000.app.github.dev/
+      - JWT_SECRET_KEY=ijcicjh;IHW;OIH:oihaoih
+    volumes:
+      - ./server:/server
+    command: flask run --host=0.0.0.0 --port=5000
     depends_on:
-      - cdn
-  client:
-    build:
-      context: client
+      - priut_db
+
+  cdn:
+    container_name: cdn
+    build: ./cdn
     ports:
-      - "80:80"
+      - "4000:4000"
+    restart: on-failure
+    volumes:
+      - ./server:/server
+    command: flask run --host=0.0.0.0 --port=4000
     depends_on:
       - server
+  
+  priut_db:
+    container_name: priut_db
+    image: postgres:12
+    restart: "on-failure"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  client:
+    container_name: client
+    build: 
+      context: ./client
+      args:
+        REACT_APP_SERVER_URL: https://redesigned-space-memory-v66v547rjg9jfxr55-5000.app.github.dev/api/  # replace to actual
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    command: serve -s build
+    depends_on:
+      - server
+
+
+volumes:
+  pgdata: {}

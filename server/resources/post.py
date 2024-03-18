@@ -1,4 +1,3 @@
-import asyncio
 import requests
 from http import HTTPStatus
 from flask import request, current_app
@@ -25,14 +24,14 @@ class Post(Resource):
             content=args['content']
         )
         post.save_to_db()
-        asyncio.run(upload_photo_to_cdn(args['image'], post))
+        upload_photo_to_cdn(args['image'], post)
         return post.json()
 
 
-async def upload_photo_to_cdn(image_content, post):
+def upload_photo_to_cdn(image_content, post):
     res = requests.post(current_app.config.get('CDN_URL') + '/upload-image', 
                       json={'image': image_content, 'post_id': post.id})
-    
-    if res.status_code == 200: 
-        post.patch(new_image=res.text)
+    print(res.status_code)
+    if res.status_code == 201: 
+        post.patch(new_image=current_app.config.get('CDN_URL') + '/image/' + str(post.id))
         post.save_to_db()

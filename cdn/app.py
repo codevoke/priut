@@ -22,15 +22,16 @@ def upload_photo():
     if not args or not args.get('image') or not args.get('post_id'):
         return "image or post_id missed", 400
 
-    file = open(f"mysite/images/{args['post_id']}.png", 'w+')
+    file = open(f"images/{args['post_id']}.png", 'w+')
+    file.write(' ')
     file.close()
 
     base64_text = args.get('image').split(',')[-1]
     image_data = base64.b64decode(base64_text)
     image = Image.open(BytesIO(image_data))
-    image.save(f"mysite/images/{args['post_id']}.png", "PNG")
+    image.save(f"images/{args['post_id']}.png", "PNG")
 
-    return f"http://codevoke.pythonanywhere.com/image/{args['post_id']}"
+    return "success", 201
 
 
 if __name__ == "__main__":
